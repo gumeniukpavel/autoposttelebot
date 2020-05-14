@@ -1,6 +1,5 @@
 from telebot import TeleBot
-import schedule
-import time
+import schedule, time, datetime
 from instagram import Account, WebAgent
 
 bot = TeleBot('1228395330:AAEPH5rF1oNLXiuFBSZ26aosz-g_n3AiFfk')
@@ -14,26 +13,49 @@ account = Account("sexyhotgrl")
 agent.update(account)
 
 media = agent.get_media(account, count=9999)[0]
+count = 1
 
 
-def job(url):
-    bot.send_photo(chat_id='@svalka_2', photo=url)
+def job():
+    global count
+    global media
+    m = media[-count]
 
+    count += 1
 
-for m in media:
     if m.display_url in data or m.is_video:
-        continue
+        return False
 
     data.append(m.display_url)
     with open("posted_photos.txt", "a") as a_file:
         a_file.write(m.display_url)
         a_file.write("\n")
-    job(m.display_url)
+    bot.send_photo(chat_id='@_n_a_g_r_a_n_i_', photo=m.display_url)
 
 
-# schedule.every(1).minutes.do(job)
+# for m in media:
+#     if m.display_url in data or m.is_video:
+#         continue
 #
-#
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+#     data.append(m.display_url)
+#     with open("posted_photos.txt", "a") as a_file:
+#         a_file.write(m.display_url)
+#         a_file.write("\n")
+#     job(m.display_url)
+
+
+schedule.every().day.at("16:58").do(job)
+schedule.every().day.at("17:40").do(job)
+schedule.every().day.at("18:55").do(job)
+schedule.every().day.at("19:30").do(job)
+schedule.every().day.at("20:35").do(job)
+schedule.every().day.at("21:20").do(job)
+
+now = datetime.datetime.now()
+
+while True:
+    if now.hour == 22:
+        break
+
+    schedule.run_pending()
+    time.sleep(55)
