@@ -4,6 +4,7 @@ from instagram import Account, WebAgent
 
 bot = TeleBot('1228395330:AAEPH5rF1oNLXiuFBSZ26aosz-g_n3AiFfk')
 
+
 with open("posted_photos.txt") as file:
     data = [row.strip() for row in file]
 
@@ -19,18 +20,18 @@ count = 1
 def job():
     global count
     global media
-    m = media[-count]
-
-    count += 1
-
-    if m.display_url in data or m.is_video:
-        return False
-
-    data.append(m.display_url)
-    with open("posted_photos.txt", "a") as a_file:
-        a_file.write(m.display_url)
-        a_file.write("\n")
-    bot.send_photo(chat_id='@_n_a_g_r_a_n_i_', photo=m.display_url)
+    while True:
+        m = media[-count]
+        count += 1
+        if m.display_url in data or m.is_video:
+            continue
+        else:
+            data.append(m.display_url)
+            with open("posted_photos.txt", "a") as a_file:
+                a_file.write(m.display_url)
+                a_file.write("\n")
+            bot.send_photo(chat_id='@n_a_g_r_a_n_i', photo=m.display_url)
+            break
 
 
 # for m in media:
@@ -44,7 +45,7 @@ def job():
 #     job(m.display_url)
 
 
-schedule.every().day.at("16:58").do(job)
+schedule.every().day.at("17:04").do(job)
 schedule.every().day.at("17:40").do(job)
 schedule.every().day.at("18:55").do(job)
 schedule.every().day.at("19:30").do(job)
