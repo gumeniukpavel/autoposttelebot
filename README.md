@@ -18,3 +18,7 @@
 
 
 4   . Change your telebot token
+
+5   . Start app
+
+``python main.py``
