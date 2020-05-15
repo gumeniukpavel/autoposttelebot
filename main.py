@@ -4,7 +4,6 @@ from instagram import Account, WebAgent
 
 bot = TeleBot('1228395330:AAEPH5rF1oNLXiuFBSZ26aosz-g_n3AiFfk')
 
-
 with open("posted_photos.txt") as file:
     data = [row.strip() for row in file]
 
@@ -17,6 +16,7 @@ media = agent.get_media(account, count=9999)[0]
 count = 1
 
 now = datetime.datetime.now()
+
 
 def job():
     global count
@@ -62,7 +62,6 @@ schedule.every().day.at("18:35").do(job)
 schedule.every().day.at("19:55").do(job)
 schedule.every().day.at("21:00").do(job)
 schedule.every().day.at("21:59").do(job)
-
 
 while True:
     if now.hour == 22:
