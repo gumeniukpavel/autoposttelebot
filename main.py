@@ -16,6 +16,7 @@ agent.update(account)
 media = agent.get_media(account, count=9999)[0]
 count = 1
 
+now = datetime.datetime.now()
 
 def job():
     global count
@@ -30,7 +31,12 @@ def job():
             with open("posted_photos.txt", "a") as a_file:
                 a_file.write(m.display_url)
                 a_file.write("\n")
-            bot.send_photo(chat_id='@n_a_g_r_a_n_i', photo=m.display_url)
+            try:
+                bot.send_photo(chat_id='@n_a_g_r_a_n_i', photo=m.display_url)
+            except:
+                print('except')
+                print(datetime.datetime.now())
+                bot.send_photo(chat_id='@n_a_g_r_a_n_i', photo=m.display_url)
             break
 
 
@@ -45,14 +51,18 @@ def job():
 #     job(m.display_url)
 
 
-schedule.every().day.at("17:04").do(job)
-schedule.every().day.at("17:40").do(job)
-schedule.every().day.at("18:55").do(job)
-schedule.every().day.at("19:30").do(job)
-schedule.every().day.at("20:35").do(job)
-schedule.every().day.at("21:20").do(job)
+schedule.every().day.at("10:50").do(job)
+schedule.every().day.at("11:40").do(job)
+schedule.every().day.at("13:00").do(job)
+schedule.every().day.at("14:10").do(job)
+schedule.every().day.at("15:40").do(job)
+schedule.every().day.at("16:20").do(job)
+schedule.every().day.at("17:50").do(job)
+schedule.every().day.at("18:35").do(job)
+schedule.every().day.at("19:55").do(job)
+schedule.every().day.at("21:00").do(job)
+schedule.every().day.at("21:59").do(job)
 
-now = datetime.datetime.now()
 
 while True:
     if now.hour == 22:
