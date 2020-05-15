@@ -10,12 +10,11 @@
 
 3   . Install InstaParser
 
-
+    git clone https://github.com/olegyurchik/pyInstagram.git
     cd pyInstagram 
     pip install .
     or
     python setup.py install
-
 
 4   . Change your telebot token
 
