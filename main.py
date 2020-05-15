@@ -24,12 +24,12 @@ def job():
     while True:
         m = media[-count]
         count += 1
-        if m.display_url in data or m.is_video:
+        if m.id in data or m.is_video:
             continue
         else:
             data.append(m.display_url)
             with open("posted_photos.txt", "a") as a_file:
-                a_file.write(m.display_url)
+                a_file.write(m.id)
                 a_file.write("\n")
             try:
                 bot.send_photo(chat_id='@n_a_g_r_a_n_i', photo=m.display_url)
@@ -41,14 +41,14 @@ def job():
 
 
 # for m in media:
-#     if m.display_url in data or m.is_video:
+#     if m.id in data or m.is_video:
 #         continue
 #
 #     data.append(m.display_url)
 #     with open("posted_photos.txt", "a") as a_file:
-#         a_file.write(m.display_url)
+#         a_file.write(m.id)
 #         a_file.write("\n")
-#     job(m.display_url)
+#     bot.send_photo(chat_id='@svalka_2', photo=m.display_url)
 
 
 schedule.every().day.at("10:50").do(job)
@@ -63,9 +63,10 @@ schedule.every().day.at("19:55").do(job)
 schedule.every().day.at("21:00").do(job)
 schedule.every().day.at("21:59").do(job)
 
+
 while True:
     if now.hour == 22:
         break
 
     schedule.run_pending()
-    time.sleep(55)
+    time.sleep(1)
