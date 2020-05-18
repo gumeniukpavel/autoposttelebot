@@ -51,7 +51,8 @@ def job():
 #     bot.send_photo(chat_id='@svalka_2', photo=m.display_url)
 
 
-schedule.every().day.at("10:50").do(job)
+schedule.every().day.at("08:30").do(job)
+schedule.every().day.at("09:30").do(job)
 schedule.every().day.at("11:40").do(job)
 schedule.every().day.at("13:00").do(job)
 schedule.every().day.at("14:10").do(job)
@@ -65,8 +66,5 @@ schedule.every().day.at("21:59").do(job)
 
 
 while True:
-    if now.hour == 22:
-        break
-
     schedule.run_pending()
     time.sleep(1)
