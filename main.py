@@ -51,18 +51,10 @@ def job():
 #     bot.send_photo(chat_id='@svalka_2', photo=m.display_url)
 
 
-schedule.every().day.at("08:30").do(job)
-schedule.every().day.at("09:30").do(job)
-schedule.every().day.at("11:40").do(job)
-schedule.every().day.at("13:00").do(job)
-schedule.every().day.at("14:10").do(job)
-schedule.every().day.at("15:40").do(job)
+schedule.every().day.at("08:45").do(job)
+schedule.every().day.at("11:00").do(job)
 schedule.every().day.at("16:20").do(job)
-schedule.every().day.at("17:50").do(job)
-schedule.every().day.at("18:35").do(job)
-schedule.every().day.at("19:55").do(job)
-schedule.every().day.at("21:00").do(job)
-schedule.every().day.at("21:59").do(job)
+schedule.every().day.at("21:25").do(job)
 
 
 while True:
