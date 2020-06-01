@@ -8,7 +8,7 @@ with open("posted_photos.txt") as file:
     data = [row.strip() for row in file]
 
 agent = WebAgent()
-account = Account("sexyhotgrl")
+account = Account("erotic_model_girls")
 
 agent.update(account)
 
@@ -53,7 +53,10 @@ def job():
 
 schedule.every().day.at("08:45").do(job)
 schedule.every().day.at("11:00").do(job)
-schedule.every().day.at("16:20").do(job)
+schedule.every().day.at("13:30").do(job)
+schedule.every().day.at("15:00").do(job)
+schedule.every().day.at("17:20").do(job)
+schedule.every().day.at("19:30").do(job)
 schedule.every().day.at("21:25").do(job)
 
 
